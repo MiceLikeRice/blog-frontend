@@ -1,4 +1,4 @@
 module.exports = {
-    baseURL: "http://localhost:50000/api",
+    baseURL: "http://74.48.83.217/api",
 };
   
