@@ -1,4 +1,4 @@
 module.exports = {
-	baseURL: "http://localhost:50000/api",
+	baseURL: "https://baoblogs.top/api",
 };
   
