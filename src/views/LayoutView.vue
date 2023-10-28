@@ -51,7 +51,6 @@
                 <span>Hello,world!</span>
             </div>
         </div>
-        <el-backtop target=".page-component__scroll .el-scrollbar__wrap"></el-backtop>
     </div>
 </template>
 
