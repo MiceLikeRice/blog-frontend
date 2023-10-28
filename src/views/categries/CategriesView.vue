@@ -10,8 +10,12 @@
             <h1 style="color:rgb(51,115,30)">{{ Object.keys(blog)[0] }}</h1>
             <div class="table" v-for="(item,index) in Object.values(blog)[0]" :key="index">
                 <a @click="navigateToBlog(item.blog_id)">
-                    <span>{{item.title}}</span>
-                    <span>{{item.upload_date}}</span>
+                    <span style="white-space: nowrap; 
+                    overflow: hidden; 
+                    text-overflow: ellipsis; 
+                    display: inline-block;
+                    max-width: calc(100% - 140px);">{{item.title}}</span>
+                    <span style="margin-left:auto ;">{{formatDate(item.upload_date)}}</span>
                 </a>
             </div>
         </div>
@@ -30,6 +34,22 @@ export default{
                 }
             });
         },
+        formatDate(isoDate) {
+
+        const date = new Date(isoDate);
+
+        // 月份的英文缩写
+        const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+
+        // 获取年、月和日
+        const year = date.getFullYear();
+        const month = date.getMonth(); // 0 到 11
+        const day = date.getDate();
+
+        // 构建最终的日期格式
+        const formattedDate = `${monthNames[month]} ${day}, ${year}`;
+        return formattedDate;
+        }
     },
     mounted(){
         request.get("/blog/allblog")
