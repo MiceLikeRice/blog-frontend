@@ -19,6 +19,11 @@ const routes = [
       {
         path:"/categries",
         component:()=>import("@/views/categries/CategriesView.vue")
+      },
+      {
+        path:"/mobileroute",
+        name:"MobileRoute",
+        component:()=>import("@/views/DeviceDetection.vue")
       }
     ]
   },

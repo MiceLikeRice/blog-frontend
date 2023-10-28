@@ -36,8 +36,8 @@
                         <div style="font-size:23px;">信仰决定未来。</div>
                     </div>
                     <div class="info-middle-middle">
-                        <div style="font-size:25px;margin-bottom:16px;">The mindset determines destiny,</div>
-                        <div style="font-size:25px;">Your beliefs shape your future.</div>
+                        <div style="font-size:25px;margin-bottom:16px;font-weight:200;">The mindset determines destiny,</div>
+                        <div style="font-size:25px;font-weight:200;">Your beliefs shape your future.</div>
                         <div></div>
                     </div>
                     <div class="info-middle-right">
