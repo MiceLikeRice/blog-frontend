@@ -63,19 +63,27 @@ export default{
         return {
             carousel_image:[
                 {
-                    image_url:"http://pic.bizhi360.com/bpic/67/11667.jpg",
+                    image_url:"https://baoblogs.top/api/image/download/bkimg1.png",
                     image_dtl:"水",
                 },
                 {
-                    image_url:"http://pic.bizhi360.com/bbpic/60/11660.jpg",
+                    image_url:"https://baoblogs.top/api/image/download/bkimg2.png",
                     image_dtl:"水",
                 },
                 {
-                    image_url:"http://pic.bizhi360.com/bpic/81/11181.jpg",
+                    image_url:"https://baoblogs.top/api/image/download/bkimg3.png",
                     image_dtl:"水",
                 },
                 {
-                    image_url:"http://pic.bizhi360.com/bpic/91/10291.jpg",
+                    image_url:"https://baoblogs.top/api/image/download/bkimg4.png",
+                    image_dtl:"水",
+                },
+                {
+                    image_url:"https://baoblogs.top/api/image/download/bkimg5.png",
+                    image_dtl:"水",
+                },
+                {
+                    image_url:"https://baoblogs.top/api/image/download/bkimg6.png",
                     image_dtl:"水",
                 }
             ]

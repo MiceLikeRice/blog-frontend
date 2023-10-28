@@ -1,4 +1,4 @@
 module.exports = {
-	baseURL: "http://baoblogs.top:50000/api",
+	baseURL: "https://baoblogs.top/api",
 };
   
