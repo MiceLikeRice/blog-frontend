@@ -36,12 +36,12 @@
                         <div style="font-size:23px;">选择决定未来。</div>
                     </div>
                     <div class="info-middle-middle">
-                        <div style="font-size:22px;margin-bottom:19px;font-weight:200;">Beliefs shape destiny,</div>
-                        <div style="font-size:22px;font-weight:200;"> choices determine the future.</div>
+                        <div style="font-size:17px;margin-bottom:5px;font-weight:200;">Beliefs shape destiny,</div>
+                        <div style="font-size:17px;font-weight:200;"> choices determine the future.</div>
                         <div></div>
                     </div>
                     <div class="info-middle-right">
-                        <div style="font-size:19px; margin-bottom:20px;">QQ: <span style="text-decoration: underline;color:rgb(220,220,220)">3014711281@qq.com</span></div>
+                        <div style="font-size:19px; margin-bottom:20px;">QQ: <span style="text-decoration: underline;color:rgb(220,220,220)">3014711281</span></div>
                         <div style="font-size:19px;">Gmail: <span style="text-decoration: underline;color:rgb(220,220,220)">leibao554@gmail.com</span></div>
                     </div>
                 </div>
