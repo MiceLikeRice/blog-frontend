@@ -4,7 +4,6 @@ import router from './router'
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 import hljs from 'highlight.js'
-import DeviceDetection from './components/DeviceDetection.vue';
 import VueMarkdown from 'vue-markdown'
 Vue.config.productionTip = false
 Vue.use(ElementUI);
@@ -26,15 +25,6 @@ Vue.directive('highlight', (el) => {
 
     // 可以为其他语言添加相应的条件
   });
-});
-
-router.beforeEach((to, from, next) => {
-  if (to.meta.requireMobile && DeviceDetection.data().isMobile) {
-    // 如果路由需要移动端服务并且用户是移动设备，则重定向到移动端路由
-    next({ name: 'MobileRoute' });
-  } else {
-    next();
-  }
 });
 
 new Vue({

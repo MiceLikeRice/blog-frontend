@@ -3,7 +3,7 @@
         
         <div class="header">
             <div class="nav">
-                <div class="nav-left">Matthew's Blog</div>
+                <div class="nav-left">Baolei's Blog</div>
                 <div class="nav-right">
                     <nav>
                         <router-link to="/Home">Home</router-link>
@@ -32,12 +32,12 @@
             <div class="contact-info">
                 <div class="info-middle">
                     <div class="info-middle-left">
-                        <div style="font-size:23px;margin-bottom:20px;">观念决定命运，</div>
-                        <div style="font-size:23px;">信仰决定未来。</div>
+                        <div style="font-size:23px;margin-bottom:20px;">观念塑造命运，</div>
+                        <div style="font-size:23px;">选择决定未来。</div>
                     </div>
                     <div class="info-middle-middle">
-                        <div style="font-size:25px;margin-bottom:16px;font-weight:200;">The mindset determines destiny,</div>
-                        <div style="font-size:25px;font-weight:200;">Your beliefs shape your future.</div>
+                        <div style="font-size:22px;margin-bottom:19px;font-weight:200;">Beliefs shape destiny,</div>
+                        <div style="font-size:22px;font-weight:200;"> choices determine the future.</div>
                         <div></div>
                     </div>
                     <div class="info-middle-right">
@@ -47,7 +47,7 @@
                 </div>
             </div>
             <div class="footer-middle">
-                <span style="color:rgb(215,215,215)">Copyright © 2023 Matthew</span>
+                <span style="color:rgb(215,215,215)">Copyright © 2023 Baolei</span>
                 <span>Hello,world!</span>
             </div>
         </div>
@@ -190,7 +190,6 @@ export default{
     font-size:50px;
     display:flex;
     align-items:center;
-    justify-content:center;
     width:400px;
     height:100%;
     float:left;
