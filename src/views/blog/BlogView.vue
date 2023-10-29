@@ -14,7 +14,7 @@
   import request from "@/utils/request.js";
   import katex from 'katex';
   import 'katex/dist/katex.min.css';
-  
+  import { Loading } from 'element-ui';
   export default {
     /* eslint-disable */ // 禁用整个文件的 ESLint 检查
     methods: {
@@ -30,6 +30,7 @@
       },
     },
     mounted() {
+        let loadingInstance = Loading.service({ fullscreen: true });
       request.get("/blog/" + this.$route.query.blogId)
         .then(response => {
           this.markdown = marked(response.data.body, { renderer: new MyRenderer() });
@@ -57,10 +58,14 @@
             setTimeout(() => {
               prism.highlightAll();
             }, 0);
+
           };
   
           // 将 <script> 标签添加到页面
           document.head.appendChild(script);
+          this.$nextTick(() => { // 以服务的方式调用的 Loading 需要异步关闭
+                loadingInstance.close();
+            });
         });
     },
     data() {

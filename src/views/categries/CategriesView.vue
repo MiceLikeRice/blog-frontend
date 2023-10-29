@@ -23,6 +23,7 @@
 </template>
 <script>
 import request from "@/utils/request.js"
+import { Loading } from 'element-ui';
 export default{
     methods:{
         navigateToBlog(id) {
@@ -51,9 +52,13 @@ export default{
         return formattedDate;
         }
     },
-    mounted(){
-        request.get("/blog/allblog")
+    async mounted(){
+        let loadingInstance = Loading.service({ fullscreen: true });
+        await request.get("/blog/allblog")
         .then((response)=>{
+            this.$nextTick(() => { // 以服务的方式调用的 Loading 需要异步关闭
+                loadingInstance.close();
+            });
             const groupedData = response.data.reduce((result, item) => {
             const { content_type, ...rest } = item;
             if (!result[content_type]) {

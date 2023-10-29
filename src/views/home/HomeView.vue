@@ -47,15 +47,15 @@ export default {
                     this.blog_count = response.data.total;
                     console.log(this.blog_count);
                 }),
-            console.log("index:",            {
-                page:index
-            });
-            request.get("/blog/allblog?page=" + index)
-            .then(response => {
-                this.blog_list = response.data
-                console.log(this.blog_list);
-            })
-            .catch(error=>console.log(error));
+                console.log("index:",            {
+                    page:index
+                });
+                request.get("/blog/allblog?page=" + index)
+                .then(response => {
+                    this.blog_list = response.data
+                    console.log(this.blog_list);
+                })
+                .catch(error=>console.log(error));
         },
         formatDate(isoDate) {
 

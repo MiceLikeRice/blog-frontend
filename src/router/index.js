@@ -20,6 +20,20 @@ const routes = [
         path:"/categries",
         component:()=>import("@/views/categries/CategriesView.vue")
       },
+    ],
+  },
+  {
+    path:"/mobile",
+    component:()=>import("@/views/mobile/MobileLayout.vue"),
+    redirect:"/mobile/home",
+    children:[{
+        path:"/mobile/home",
+        component:()=>import("@/views/mobile/MobileHome.vue")
+      },
+      {
+        path:"/mobile/blog",
+        component:()=>import("@/views/mobile/MobileBlog.vue")
+      },
     ]
   },
   {

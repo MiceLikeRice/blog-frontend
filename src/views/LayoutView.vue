@@ -1,6 +1,5 @@
 <template>
     <div class="app">
-        
         <div class="header">
             <div class="nav">
                 <div class="nav-left">Baolei's Blog</div>
@@ -66,10 +65,6 @@ export default{
                     image_dtl:"水",
                 },
                 {
-                    image_url:"https://baoblogs.top/api/image/download/bkimg2.png",
-                    image_dtl:"水",
-                },
-                {
                     image_url:"https://baoblogs.top/api/image/download/bkimg3.png",
                     image_dtl:"水",
                 },
@@ -96,6 +91,7 @@ export default{
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    font-family: "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
 }
 .info-middle-left{
     display:flex;
@@ -147,6 +143,7 @@ export default{
 }
 .footer{
     height:250px;
+    min-width:1200px;
     background-color:RGB(51,105,30);
 }
 .middle{
@@ -209,12 +206,12 @@ export default{
 }
 .header{
     height:80px;
-    width:100%;
+    min-width:1200px;
     background-color:RGB(51,105,30);
 }
 .topper{
     height:400px;
-    width:100%;
+    min-width:1200px;
     background-color:RGB(85,139,47);
 }
 </style>
