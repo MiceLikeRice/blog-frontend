@@ -1,6 +1,14 @@
 <template>
     <div class="home">
         <div class="math" v-html="markdown"></div>
+        <div style="
+        color:grey;
+        margin:30px 0;
+        float:right;
+        ">
+          writen by :Bao Lei
+        </div>
+        <div style="clear:both;"></div>
         <div class="block">
           <span class="demonstration">给个好评吧😊</span>
           <el-rate :colors="colors"></el-rate>
@@ -94,6 +102,10 @@ class MyRenderer extends marked.Renderer {
 }
 </script>
 <style>
+.math{
+  font-size:12px;
+  line-height:auto;
+}
 pre[class*="language-"] {
     border-radius: 8px; /* 设置边角的弯曲程度 */
   }

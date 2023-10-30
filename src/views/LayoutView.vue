@@ -2,7 +2,7 @@
     <div class="app">
         <div class="header">
             <div class="nav">
-                <div class="nav-left">Baolei's Blog</div>
+                <div class="nav-left" >Baolei's Blog</div>
                 <div class="nav-right">
                     <nav>
                         <router-link to="/Home">Home</router-link>
@@ -31,8 +31,8 @@
             <div class="contact-info">
                 <div class="info-middle">
                     <div class="info-middle-left">
-                        <div style="font-size:23px;margin-bottom:20px;">观念塑造命运，</div>
-                        <div style="font-size:23px;">选择决定未来。</div>
+                        <div style="font-size:23px;margin-bottom:20px;font-family: '楷体', 'KaiTi', cursive;">观念塑造命运，</div>
+                        <div style="font-size:23px;font-family: '楷体', 'KaiTi', cursive;">选择决定未来。</div>
                     </div>
                     <div class="info-middle-middle">
                         <div style="font-size:17px;margin-bottom:5px;font-weight:200;">Beliefs shape destiny,</div>
@@ -41,12 +41,12 @@
                     </div>
                     <div class="info-middle-right">
                         <div style="font-size:19px; margin-bottom:20px;">QQ: <span style="text-decoration: underline;color:rgb(220,220,220)">3014711281</span></div>
-                        <div style="font-size:19px;">Gmail: <span style="text-decoration: underline;color:rgb(220,220,220)">leibao554@gmail.com</span></div>
+                        <div style="font-size:19px;">Mail: <span style="text-decoration: underline;color:rgb(220,220,220)">leibao554@gmail.com</span></div>
                     </div>
                 </div>
             </div>
             <div class="footer-middle">
-                <span style="color:rgb(215,215,215)">Copyright © 2023 Baolei</span>
+                <span style="color:rgb(215,215,215)">Copyright © 2023 Bao Lei</span>
                 <span>Hello,world!</span>
             </div>
         </div>
@@ -83,8 +83,19 @@ export default{
             ]
         }
     },
+    mounted() {
+    // 获取用户代理字符串
+    const userAgent = navigator.userAgent;
 
-}
+    // 判断是否是移动设备
+    const isMobileDevice = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(userAgent);
+
+    if (isMobileDevice) {
+      // 如果是移动设备，跳转到移动设备页面
+      window.location.href = '/mobile'; // 请替换为实际的移动设备页面URL
+    }
+  }
+};
 </script>
 <style>
 .app{

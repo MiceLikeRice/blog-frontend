@@ -54,7 +54,8 @@
                     border-radius:5px;
                     font-size:15px;
                     color:grey;
-                    border:none
+                    border:none;
+                    background-color:white;
                     "
                     @click="search.catagry='全部'"
                     >全部</button>
@@ -66,7 +67,9 @@
                     border-radius:5px;
                     font-size:15px;
                     color:grey;
-                    border:none
+                    border:none;
+                    background-color:white;
+                    margin-top:5px;
                     "
                     @click="search.catagry=Object.keys(blog)[0]"
                     >{{ Object.keys(blog)[0] }}</button>
@@ -102,10 +105,10 @@
                     <img style="width:20px;height:20px;margin:0 auto;" src="/blogger.png">
                 </div>
                 <div style="width:calc(100% - 50px);">
-                    <div style="font-size:13px;margin-bottom:5px;">
+                    <div style="font-size:14px;margin-bottom:5px;">
                         {{blog.title}}
                     </div>
-                    <div style="font-size:8px">
+                    <div style="font-size:9px;color:grey;">
                         {{blog.outline}}
                     </div>
                 </div>
@@ -124,12 +127,12 @@
         <div class="top">
             <div class="top-left">
                 <img src="/homeicon.png"/>
-                <span style="font-size:20px;margin-left:10px;">My Blog</span>
+                <span style="font-size:22px;margin-left:10px;">My Blog</span>
             </div>
             <div class="top-right">
-                <button icon="/search.png" @click="showSearch=true">
+                <button icon="/search.png" @click="showSearch=true" style="background-color:white;box-shadow:2px 2px 2px rgb(200,200,200)">
                     <img src="/search.png">
-                    <span style="margin-left:auto;margin-right:10px;color:white;font-size:17px;">搜索</span>
+                    <span style="margin-left:auto;margin-right:10px;color:grey;font-size:14px;">搜索</span>
                 </button>
                 <div>
                     <img src="/document.gif">
@@ -140,8 +143,8 @@
         
         <div class="nav">
             <img src="/home.png">
-            <span style="margin:0 0 0 10px;font-size:19px;"><a href="/mobile/home" :style="linkStyle">home</a>&nbsp;</span>/
-            <span v-if="this.$route.path==='/mobile/blog'" style="margin:0 10px 0 0;font-size:19px;">&nbsp;<a href="/mobile/blog">blog</a>&nbsp;/</span>
+            <span style="margin:0 0 0 10px;font-size:19px;"><a href="/mobile/home" :style="linkStyle" style="color:black;">home</a>&nbsp;</span>/
+            <span v-if="this.$route.path==='/mobile/blog'" style="margin:0 10px 0 0;font-size:19px;">&nbsp;<a href="/mobile/blog" style="color:black;">blog</a>&nbsp;/</span>
         </div>
         <div class="main">
             <router-view/>
@@ -286,7 +289,7 @@ export default{
     height:auto;
     padding:5px;
     box-shadow:2px 2px 3px rgb(220,220,220);
-    color:grey;
+    color:rgb(230,230,230);
 }
 .search-board{
     position:fixed;
@@ -321,6 +324,7 @@ export default{
     height:40px;
     display:flex;
     align-items:center;
+    
 }
 .top-right>button>img{
     height:15px;
@@ -346,13 +350,14 @@ export default{
     border:2px solid #91b6f88a; 
 }
 .top-right>div{
-    height:40px;
-    width:40px;
+    height:37px;
+    width:37px;
     margin:5px;
     display:flex;
     align-items:center;
     justify-content:center;
-    background-color:#91b6f88a;
+    background-color:white;
+    box-shadow:2px 2px 2px rgb(200,200,200);
     border-radius:8px;
 }
 .top-right{
@@ -377,6 +382,6 @@ export default{
 .app{
     width:100%;
     min-height:100vh;
-    background-color:rgb(230,230,230);
+    background-color:rgb(245,245,245);
 }
 </style>

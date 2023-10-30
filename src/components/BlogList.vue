@@ -1,7 +1,7 @@
 <template>
     <div class="blog-list-container">
         <div style="width:100%;display:flex;">
-            <div class="blog-info">
+            <div class="blog-info" :style="{'width':(!image_url?'auto':'80%')}">
                 <div class="title" @click="navigateToBlog"><a>{{title}}</a></div>
                 <div class="outline">{{outline}}</div>
             </div>

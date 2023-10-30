@@ -10,6 +10,7 @@
         @refresh="refresh(current_page)"
         />
         <el-pagination
+        style="display:flex;justify-content:center;margin:50px 0;"
         background
         layout="prev, pager, next"
         :total="blog_count"

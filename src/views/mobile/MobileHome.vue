@@ -1,14 +1,14 @@
 <template>
     <div class="home">
         <div style="width:100%;font-size:16px;">
-            <div style="float:left">title</div>
-            <div style="float:right">upload date</div>
+            <div style="float:left;margin-left:28px;color:grey">title</div>
+            <div style="float:right;color:grey">upload date</div>
             <div style="clear:both"></div>
         </div>
         <div class="blog-list" v-for="(blog,index) in blog_list" :key="index"
         @click="navigateToBlog(blog.blog_id)"
         >
-            <img style="width:16px;height:16px;margin-left:5px;" src="/blogger.png"/>
+            <img style="width:25px;height:25px;margin:0 10px;" src="/blogger.png"/>
             <div class="title"><div
                 style="
                 white-space: wrap; 
@@ -20,7 +20,8 @@
                 style="white-space: wrap; 
                 display: block;
                 width:100%;
-                font-size:8px">
+                font-size:9px;
+                color:grey;">
                 {{blog.outline}}</div>
             </div>
             <div class="upload-date">
@@ -156,8 +157,8 @@
     background-color:#56d2ff6e;
     align-items:center;
     padding:5px 0px;
-    border-radius:12px;
-    box-shadow:2px 2px 2px rgb(228,228,228);
+    border-radius:5px;
+    box-shadow:0 0 5px rgb(170,170,170);
 }
 .home{
     width:calc(100% - 40px);
@@ -165,7 +166,7 @@
     min-height: 500px;
     margin:0  auto;
     border-radius:10px;
-    box-shadow:0 2px 10px rgb(170,170,170);
+    box-shadow:0 0 5px rgb(210,210,210);
     padding:10px;
 }
 </style>

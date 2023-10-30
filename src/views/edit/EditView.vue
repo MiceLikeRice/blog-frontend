@@ -8,8 +8,8 @@
         :autoSave="true"
         :interval="1000"
       />
-      <div class="function">
-        <i class="el-icon-setting" style="font-size: 30px;"></i>
+      <div class="function" v-if="this.$route.query.blogId">
+        <i class="el-icon-folder-opened" @click="updateMarkdown" style="font-size: 30px;"></i>
       </div>
       <div class="save" @click="save">
         <i class="el-icon-folder-opened" style="font-size: 30px;"></i> 
@@ -33,7 +33,7 @@
             :action="config.baseURL+'/image/uploadImage'"
             multiple>
             <i class="el-icon-upload"></i>
-            <div class="el-upload__text">将文件拖到此处，或<em>点击上传</em></div>
+            <div class="el-upload__text">将图片拖到此处，或<em>点击上传</em></div>
             <div class="el-upload__tip" slot="tip">只能上传jpg/png文件，且不超过500kb</div>
           </el-upload>
           <span style="margin-left:50px;">categry</span>
@@ -67,12 +67,11 @@
           :on-error="handleError"
           list-type="picture">
           <el-button size="small" type="primary">点击上传</el-button>
-          <div slot="tip" class="el-upload__tip">只能上传jpg/png文件，且不超过500kb</div>
+          <div slot="tip" class="el-upload__tip">只能上传jpg/png文件，且不超过500kb。上传成功后，点击对应图片即可复制图片的地址。</div>
         </el-upload>
 
         <span slot="footer" class="dialog-footer">
           <el-button @click="centerDialogVisible = false">取 消</el-button>
-          <el-button type="primary" >上传并保存</el-button>
         </span>
       </el-dialog>
     </div>
@@ -104,7 +103,9 @@
         categries:[
           "文献精读",
           "技术",
-          "随笔"
+          "随笔",
+          "英文",
+          "课堂笔记"
         ],
         selected_type:'技术',
         markdown_content:''
@@ -112,6 +113,14 @@
     },
     methods: {
       updateMarkdown(){
+        if(this.formData.title.length<10||this.formData.outline<10){
+          this.$message("题目或者介绍不能少于10个字","error")
+          return;
+        }
+        if(this.markdown_content<10){
+          this.$message("blog不能少于10个字","error")
+          return;
+        }
         console.log(this.markdown_content);
         this.centerDialogVisible = false;
         const blog={
@@ -135,6 +144,14 @@
         })
       },
       saveMarkdown(){
+        if(this.formData.title.length<10||this.formData.outline<10){
+          this.$message("题目或者介绍不能少于10个字","error")
+          return;
+        }
+        if(this.markdown_content<10){
+          this.$message("blog不能少于10个字","error")
+          return;
+        }
         console.log(this.markdown_content);
         this.centerDialogVisible = false;
         const blog={
@@ -152,6 +169,7 @@
               message: '保存成功',
               type: 'success'
             });
+            this.navigateToEdit(response.data.blog_id);
         })
         .catch((error)=>{
           console.log(error);
@@ -208,6 +226,15 @@
         // 删除临时<textarea>元素
         document.body.removeChild(textArea);
       },
+      navigateToEdit(id) {
+            this.$router.push({
+                path: "/edit",
+                query: {
+                    blogId: id, // 传递博客的唯一标识符或其他数据
+                    // 添加其他需要传递的数据
+                }
+            });
+      },
       uploadImage(){
         this.centerDialogVisible=true;
       },
@@ -246,6 +273,19 @@
       },
     },
     mounted() {
+
+      // 获取用户代理字符串
+      const userAgent = navigator.userAgent;
+
+      // 判断是否是移动设备
+      const isMobileDevice = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(userAgent);
+
+      if (isMobileDevice) {
+        // 如果是移动设备，跳转到移动设备页面
+        window.location.href = '/mobile'; // 请替换为实际的移动设备页面URL
+      }
+      
+
       window.addEventListener('resize', this.setMarkdownProHeight); // 监听窗口大小变化
       if(this.$route.query.blogId){
         request.get("/blog/"+this.$route.query.blogId)
