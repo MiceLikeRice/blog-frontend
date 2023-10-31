@@ -6,7 +6,7 @@
       margin:50px 0;
       float:right;
       ">
-        writen by :Bao Lei
+        written by :Bao Lei
       </div>
       <div style="clear:both;"></div>
       <div class="block">

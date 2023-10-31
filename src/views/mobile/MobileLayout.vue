@@ -147,7 +147,8 @@
             <span v-if="this.$route.path==='/mobile/blog'" style="margin:0 10px 0 0;font-size:19px;">&nbsp;<a href="/mobile/blog" style="color:black;">blog</a>&nbsp;/</span>
         </div>
         <div class="main">
-            <router-view/>
+            <router-view
+            />
         </div>
         <div class="footer">
             <div>Copyright © 2023 leibao554@gmail.com</div>
@@ -241,6 +242,13 @@ export default{
         .catch((error)=>{
             console.log(error);
         })
+        this.$notify({
+          title: '学无止尽',
+          message: '<h3>Wellcome to my blogs~</h3><h3>邮箱:<div>leibao554@gmail.com</div></h3>',
+          duration: 3000,
+          customClass:"notify",
+          dangerouslyUseHTMLString:true
+        });
     },
     data(){
         return{
@@ -267,6 +275,12 @@ export default{
 }
 </script>
 <style>
+.el-radio{
+    margin-right:10px;
+}
+.notify{
+    width:230px;
+}
 .search-bloglist{
     display:flex;
     border:2px solid rgb(200,200,200);

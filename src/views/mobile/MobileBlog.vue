@@ -1,12 +1,22 @@
 <template>
     <div class="home">
-        <div class="math" v-html="markdown"></div>
+      <div class="font-size" style="display:flex;align-items:center;">
+        <span style="font-size:14px">font size</span>
+        <el-radio-group v-model="font_size" style="margin-left:auto;width:180px;"
+        @input="changeFontSize"
+        >
+            <el-radio :label="10">小号</el-radio>
+            <el-radio :label="12">中号</el-radio>
+            <el-radio :label="14">大号</el-radio>
+        </el-radio-group>
+      </div>
+        <div class="math" :style="{fontSize:font_size+'px'}" v-html="markdown"></div>
         <div style="
         color:grey;
         margin:30px 0;
         float:right;
         ">
-          writen by :Bao Lei
+          written by :Bao Lei
         </div>
         <div style="clear:both;"></div>
         <div class="block">
@@ -78,7 +88,8 @@ export default {
   data() {
     return { 
       markdown: "",
-      colors: ['#99A9BF', '#F7BA2A', '#FF9900']  // 等同于 { 2: '#99A9BF', 4: { value: '#F7BA2A', excluded: true }, 5: '#FF9900' }
+      colors: ['#99A9BF', '#F7BA2A', '#FF9900'],  // 等同于 { 2: '#99A9BF', 4: { value: '#F7BA2A', excluded: true }, 5: '#FF9900' }
+      font_size:12
     }
   }
 }
@@ -103,7 +114,7 @@ class MyRenderer extends marked.Renderer {
 </script>
 <style>
 .math{
-  font-size:12px;
+
   line-height:auto;
 }
 pre[class*="language-"] {

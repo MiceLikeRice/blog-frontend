@@ -1,5 +1,15 @@
 <template>
     <div class="home">
+        <div class="font-size" style="display:flex;align-items:center;">
+            <span style="font-size:14px">font size</span>
+            <el-radio-group v-model="font_size" style="margin-left:auto;width:180px;"
+            @input="changeFontSize"
+            >
+                <el-radio :label="9">小号</el-radio>
+                <el-radio :label="11">中号</el-radio>
+                <el-radio :label="13">大号</el-radio>
+            </el-radio-group>
+        </div>
         <div style="width:100%;font-size:16px;">
             <div style="float:left;margin-left:28px;color:grey">title</div>
             <div style="float:right;color:grey">upload date</div>
@@ -7,22 +17,27 @@
         </div>
         <div class="blog-list" v-for="(blog,index) in blog_list" :key="index"
         @click="navigateToBlog(blog.blog_id)"
-        >
+        >   
+            <div style="display:flex;align-items:center;">
             <img style="width:25px;height:25px;margin:0 10px;" src="/blogger.png"/>
             <div class="title"><div
                 style="
                 white-space: wrap; 
                 display: block;
                 width:100%;
-                font-size:14px">
+                "
+                :style="{fontSize:1.5*font_size+'px'}"
+                >
                 {{blog.title}}</div>
                 <div
                 style="white-space: wrap; 
                 display: block;
                 width:100%;
-                font-size:9px;
-                color:grey;">
+                color:#0c2c36cf"
+                :style="{fontSize:font_size+'px'}"
+                >
                 {{blog.outline}}</div>
+            </div>
             </div>
             <div class="upload-date">
                 <div>{{formatDate(blog.upload_date)}}</div>
@@ -49,6 +64,7 @@
                 blog_list:[],
                 page:1,
                 blog_count:0,
+                font_size:9,
             }
         },
         mounted() {
@@ -64,6 +80,10 @@
             })
         },
         methods:{
+            changeFontSize(size){
+                console.log(this.font_size);
+                this.font_size=size;
+            },
             async refresh(index){
                 window.scrollTo({
                     top: 0,
@@ -134,9 +154,12 @@
     display:flex;
     align-items:center;
     justify-content:center;
+    margin-left:auto;
+    margin-right:20px;
+    line-height:20px;
 }
 .upload-date{
-    width:60px;
+    width:100%;
     font-size:10px;
     display:flex;
     align-items:center;
@@ -144,7 +167,7 @@
     flex-direction:column;
 }
 .title{
-    width:calc(100% - 90px);
+    width:calc(100%);
     margin:0 5px;
     display:flex;
     align-items:center;
@@ -153,9 +176,7 @@
 .blog-list{
     margin:5px 0;
     background-color:white;
-    display:flex;
     background-color:#56d2ff6e;
-    align-items:center;
     padding:5px 0px;
     border-radius:5px;
     box-shadow:0 0 5px rgb(170,170,170);
