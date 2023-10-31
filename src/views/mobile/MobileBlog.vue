@@ -113,9 +113,12 @@ class MyRenderer extends marked.Renderer {
 }
 </script>
 <style>
+pre{
+  overflow:scroll;
+}
 .math{
   line-height:auto;
-  overflow:wrap;
+  overflow:hidden;
 }
 pre[class*="language-"] {
     border-radius: 8px; /* 设置边角的弯曲程度 */
