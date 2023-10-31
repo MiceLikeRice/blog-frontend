@@ -154,6 +154,23 @@
             <div>Copyright © 2023 leibao554@gmail.com</div>
             <div style="color:#969494;">QQ:3014711281</div>
         </div>
+        <div style="
+        position:fixed;
+        bottom:100px;
+        right:50px;
+        border-radius:50%;
+        display:flex;
+        aligin:center;
+        width:40px;
+        height:40px;
+        justify-content:center;
+        background-color:white;
+        box-shadow:0px 0px 10px rgb(200,200,200);
+        "
+        @click="scrollToTop"
+        >
+            <i class="el-icon-caret-top" style="font-size:30px;margin-top:4px;color:rgb(64,158,255)"></i>
+        </div>
     </div>
 </template>
 <script>
@@ -161,11 +178,20 @@ import request from "@/utils/request.js"
 import { Loading } from 'element-ui';
 export default{
     methods:{
+        needToScroll(){
+            return window.scrollY >= 200;
+        },
+        scrollToTop(){
+            window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth' // 可以使滚动过渡更平滑，不加则是瞬间滚动
+            });
+        },
         async refresh(index){
             window.scrollTo({
                     top: 0,
                     behavior: 'smooth' // 可以使滚动过渡更平滑，不加则是瞬间滚动
-                });
+            });
             console.log(index);
             console.log(this.page);
             this.page=index;

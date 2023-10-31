@@ -3,7 +3,6 @@
         <div class="font-size" style="display:flex;align-items:center;">
             <span style="font-size:14px">font size</span>
             <el-radio-group v-model="font_size" style="margin-left:auto;width:180px;"
-            @input="changeFontSize"
             >
                 <el-radio :label="9">小号</el-radio>
                 <el-radio :label="11">中号</el-radio>
@@ -75,10 +74,6 @@
             })
         },
         methods:{
-            changeFontSize(size){
-                console.log(this.font_size);
-                this.font_size=size;
-            },
             async refresh(index){
                 window.scrollTo({
                     top: 0,

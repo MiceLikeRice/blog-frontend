@@ -3,7 +3,6 @@
       <div class="font-size" style="display:flex;align-items:center;">
         <span style="font-size:14px">font size</span>
         <el-radio-group v-model="font_size" style="margin-left:auto;width:260px;display:flex;align-items:center;"
-        @input="changeFontSize"
         >
             <el-radio :label="10">small</el-radio>
             <el-radio :label="12">middle</el-radio>
