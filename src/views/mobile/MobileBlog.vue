@@ -2,12 +2,13 @@
     <div class="home">
       <div class="font-size" style="display:flex;align-items:center;">
         <span style="font-size:14px">font size</span>
-        <el-radio-group v-model="font_size" style="margin-left:auto;width:180px;"
+        <el-radio-group v-model="font_size" style="margin-left:auto;width:260px;display:flex;align-items:center;"
         @input="changeFontSize"
         >
-            <el-radio :label="10">小号</el-radio>
-            <el-radio :label="12">中号</el-radio>
-            <el-radio :label="14">大号</el-radio>
+            <el-radio :label="10">small</el-radio>
+            <el-radio :label="12">middle</el-radio>
+            <el-radio :label="14">big</el-radio>
+            <el-radio :label="16">bigger</el-radio>
         </el-radio-group>
       </div>
         <div class="math" :style="{fontSize:font_size+'px'}" v-html="markdown"></div>
@@ -113,9 +114,11 @@ class MyRenderer extends marked.Renderer {
 }
 </script>
 <style>
+.el-radio{
+  margin-right:5px;
+}
 pre{
   overflow:scroll;
-  background-color:grey;
 }
 .math{
   line-height:auto;
