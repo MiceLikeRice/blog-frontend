@@ -144,7 +144,7 @@
         <div class="nav">
             <img src="/home.png">
             <span style="margin:0 0 0 10px;font-size:19px;"><a href="/mobile/home" :style="linkStyle" style="color:black;">home</a>&nbsp;</span>/
-            <span v-if="this.$route.path==='/mobile/blog'" style="margin:0 10px 0 0;font-size:19px;">&nbsp;<a href="/mobile/blog" style="color:black;">blog</a>&nbsp;/</span>
+            <span v-if="this.$route.path==='/mobile/blog'" style="margin:0 10px 0 0;font-size:19px;">&nbsp;<a style="color:black;">blog</a>&nbsp;/</span>
         </div>
         <div class="main">
             <router-view

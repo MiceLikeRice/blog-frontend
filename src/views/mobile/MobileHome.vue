@@ -10,11 +10,6 @@
                 <el-radio :label="13">大号</el-radio>
             </el-radio-group>
         </div>
-        <div style="width:100%;font-size:16px;">
-            <div style="float:left;margin-left:28px;color:grey">title</div>
-            <div style="float:right;color:grey">upload date</div>
-            <div style="clear:both"></div>
-        </div>
         <div class="blog-list" v-for="(blog,index) in blog_list" :key="index"
         @click="navigateToBlog(blog.blog_id)"
         >   
@@ -162,9 +157,6 @@
     width:100%;
     font-size:10px;
     display:flex;
-    align-items:center;
-    justify-content:center;
-    flex-direction:column;
 }
 .title{
     width:calc(100%);
