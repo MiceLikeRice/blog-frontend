@@ -156,8 +156,8 @@
         </div>
         <div style="
         position:fixed;
-        bottom:100px;
-        right:50px;
+        bottom:80px;
+        right:30px;
         border-radius:50%;
         display:flex;
         aligin:center;
