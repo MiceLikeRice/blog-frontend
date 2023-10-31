@@ -115,6 +115,7 @@ class MyRenderer extends marked.Renderer {
 <style>
 pre{
   overflow:scroll;
+  background-color:grey;
 }
 .math{
   line-height:auto;
