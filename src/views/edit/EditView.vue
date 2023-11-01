@@ -65,11 +65,22 @@
           :file-list="fileList"
           :on-success="handleSuccess"
           :on-error="handleError"
+          :before-upload="beforeUpload"
           list-type="picture">
           <el-button size="small" type="primary">点击上传</el-button>
-          <div slot="tip" class="el-upload__tip">只能上传jpg/png文件，且不超过500kb。上传成功后，点击对应图片即可复制图片的地址。</div>
+          <div slot="tip" class="el-upload__tip">只能上传jpg/png文件，且不超过500M。上传成功后，点击对应图片即可复制图片的地址。</div>
         </el-upload>
-
+        <div style="height:50px;"></div>
+        <el-upload
+          class="upload-demo"
+          :action="config.baseURL+'/resource/upload'"
+          :on-preview="fileHandlePreview"
+          :on-change="handleChange"
+          :file-list="files"
+          :before-upload="beforeUpload">  
+          <el-button size="small" type="primary">点击上传</el-button>
+          <div slot="tip" class="el-upload__tip">可以上传视频，图片，pdf，word等参考资料。文件大小小于500M。上传成功后，点击对应图片即可复制图片的地址。</div>
+        </el-upload>
         <span slot="footer" class="dialog-footer">
           <el-button @click="centerDialogVisible = false">取 消</el-button>
         </span>
@@ -88,6 +99,7 @@
     },
     data() {
       return {
+        files:[],
         config,
         markdownProHeight: window.innerHeight, // 初始高度为屏幕高度
         function_open:false,
@@ -112,6 +124,13 @@
       };
     },
     methods: {
+    beforeUpload(file) {  
+      const isLt2M = file.size / 1024 / 1024 < 500  
+      if (!isLt2M) {  
+        this.$message.error('上传图片不能超过500MB!')  
+      }  
+        return isLt2M ? true : false  
+    },
       updateMarkdown(){
         if(this.formData.title.length<10||this.formData.outline<10){
           this.$message("题目或者介绍不能少于10个字","error")
@@ -193,6 +212,38 @@
       },
       handleRemove(file, fileList) {
         console.log(file, fileList);
+      },
+      fileHandlePreview(file){
+        this.$message({
+          message: '复制成功',
+          type: 'success'
+        });
+        const fileName = config.baseURL+"/resource/download/"+file.name;
+
+        // 创建一个临时的<textarea>元素以便复制文本
+        const textArea = document.createElement('textarea');
+        textArea.value = fileName;
+        document.body.appendChild(textArea);
+
+        // 选择文本内容
+        textArea.select();
+
+        try {
+          // 尝试将文本复制到剪贴板
+          document.execCommand('copy');
+          this.$message({
+            message: '已成功复制到剪贴板',
+            type: 'success'
+          });
+        } catch (err) {
+          this.$message({
+            message: '复制失败',
+            type: 'error'
+          });
+        }
+
+        // 删除临时<textarea>元素
+        document.body.removeChild(textArea);
       },
       handlePreview(file) {
         this.$message({
