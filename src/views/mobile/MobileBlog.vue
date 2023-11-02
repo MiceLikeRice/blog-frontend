@@ -2,12 +2,12 @@
     <div class="home">
       <div class="font-size" style="display:flex;align-items:center;">
         <span style="font-size:14px">font size</span>
-        <el-radio-group v-model="font_size" style="margin-left:auto;width:260px;display:flex;align-items:center;"
+        <el-radio-group v-model="font_size" style="margin-left:auto;width:160px;display:flex;align-items:center;"
         >
-            <el-radio :label="10">small</el-radio>
-            <el-radio :label="12">middle</el-radio>
-            <el-radio :label="14">big</el-radio>
-            <el-radio :label="16">bigger</el-radio>
+            <el-radio :label="10">S</el-radio>
+            <el-radio :label="12">M</el-radio>
+            <el-radio :label="14">L</el-radio>
+            <el-radio :label="16">LL</el-radio>
         </el-radio-group>
       </div>
         <div class="math" :style="{fontSize:font_size+'px'}" v-html="markdown"></div>

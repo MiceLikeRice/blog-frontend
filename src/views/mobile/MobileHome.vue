@@ -2,11 +2,11 @@
     <div class="home">
         <div class="font-size" style="display:flex;align-items:center;">
             <span style="font-size:14px">font size</span>
-            <el-radio-group v-model="font_size" style="margin-left:auto;width:180px;"
+            <el-radio-group v-model="font_size" style="margin-left:auto;width:225px;"
             >
-                <el-radio :label="9">小号</el-radio>
-                <el-radio :label="11">中号</el-radio>
-                <el-radio :label="13">大号</el-radio>
+                <el-radio :label="9">Small</el-radio>
+                <el-radio :label="11">Medium</el-radio>
+                <el-radio :label="13">Large</el-radio>
             </el-radio-group>
         </div>
         <div class="blog-list" v-for="(blog,index) in blog_list" :key="index"

@@ -130,9 +130,9 @@
                 <span style="font-size:22px;margin-left:10px;">My Blog</span>
             </div>
             <div class="top-right">
-                <button icon="/search.png" @click="showSearch=true" style="background-color:white;box-shadow:2px 2px 2px rgb(200,200,200)">
+                <button icon="/search.png" @click="showSearch=true" style="background-color:rgb(236,238,240);box-shadow:1px 1px 1px rgb(200,200,200)">
                     <img src="/search.png">
-                    <span style="margin-left:auto;margin-right:10px;color:grey;font-size:14px;">搜索</span>
+                    <span style="margin-left:auto;margin-right:10px;color:grey;font-size:14px;background-color:">搜索</span>
                 </button>
                 <div>
                     <img src="/document.gif">
@@ -144,7 +144,7 @@
         <div class="nav">
             <img src="/home.png">
             <span style="margin:0 0 0 10px;font-size:19px;"><a href="/mobile/home" :style="linkStyle" style="color:black;">home</a>&nbsp;</span>/
-            <span v-if="this.$route.path==='/mobile/blog'" style="margin:0 10px 0 0;font-size:19px;">&nbsp;<a style="color:black;">blog</a>&nbsp;/</span>
+            <span v-if="this.$route.path==='/mobile/blog'" style="margin:0 10px 0 0;font-size:19px;">&nbsp;<a style="color:black;text-decoration:underline">blog</a>&nbsp;/</span>
         </div>
         <div class="main">
             <router-view
@@ -270,8 +270,8 @@ export default{
         })
         this.$notify({
           title: '学无止尽',
-          message: '<h3>Wellcome to my blogs~</h3><h3>邮箱:<div>leibao554@gmail.com</div></h3>',
-          duration: 3000,
+          message: '<h4>Wellcome to my blogs~</h4><h5>邮箱:<a href="leibao554@gmail.com"> leibao554@gmail.com</a></h5><h5>QQ:<a> 3014711281</a></h5>',
+          duration: 0,
           customClass:"notify",
           dangerouslyUseHTMLString:true
         });
@@ -301,11 +301,22 @@ export default{
 }
 </script>
 <style>
+.el-notification__content h4,h5{
+    margin:0px;
+}
+.el-notification__title{
+    font-size:13px;
+}
+.main{
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol" !important;
+
+}
 .el-radio{
     margin-right:10px;
 }
 .notify{
-    width:230px;
+    width:70vw;
+    height:115px;
 }
 .search-bloglist{
     display:flex;
@@ -422,6 +433,7 @@ export default{
 .app{
     width:100%;
     min-height:100vh;
-    background-color:rgb(245,245,245);
+    background-color:rgb(247,248,250);
+    
 }
 </style>
