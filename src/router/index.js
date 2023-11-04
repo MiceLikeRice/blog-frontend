@@ -6,7 +6,7 @@ Vue.use(VueRouter)
 const routes = [
   {
     path:"/",
-    redirect:"/loading",
+    component:()=>import("@/views/LoadingView.vue")
   },
   {
     path:"/win",
