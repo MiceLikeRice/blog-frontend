@@ -6,8 +6,12 @@ Vue.use(VueRouter)
 const routes = [
   {
     path:"/",
-    component:()=>import("@/views/LayoutView.vue"),
     redirect:"/loading",
+  },
+  {
+    path:"/win",
+    component:()=>import("@/views/LayoutView.vue"),
+    redirect:"/home",
     children:[{
         path:"/home",
         component:()=>import("@/views/home/HomeView.vue")
