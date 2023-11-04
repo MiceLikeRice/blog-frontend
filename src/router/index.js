@@ -7,7 +7,7 @@ const routes = [
   {
     path:"/",
     component:()=>import("@/views/LayoutView.vue"),
-    redirect:"/home",
+    redirect:"/loading",
     children:[{
         path:"/home",
         component:()=>import("@/views/home/HomeView.vue")
@@ -39,6 +39,10 @@ const routes = [
   {
     path:"/edit",
     component:()=>import("@/views/edit/EditView.vue"),
+  },
+  {
+    path:"/loading",
+    component:()=>import("@/views/LoadingView.vue"),
   }
 ];
 
