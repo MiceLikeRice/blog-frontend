@@ -6,7 +6,9 @@
         :height="markdownProHeight" 
         @on-save="handleSave"
         :autoSave="true"
-        :interval="1000"
+        :interval="0"
+        :markedOptions="{gfm: true}"
+        :toolbars="false"
       />
       <div class="function" v-if="this.$route.query.blogId">
         <i class="el-icon-folder-opened" @click="updateMarkdown" style="font-size: 30px;"></i>
@@ -75,7 +77,6 @@
           class="upload-demo"
           :action="config.baseURL+'/resource/upload'"
           :on-preview="fileHandlePreview"
-          :on-change="handleChange"
           :file-list="files"
           :before-upload="beforeUpload">  
           <el-button size="small" type="primary">点击上传</el-button>
@@ -92,6 +93,7 @@
   import MarkdownPro from 'vue-meditor';
   import request from "@/utils/request.js";
   import config from "@/config.js"
+  import 'katex/dist/katex.min.css';
    /* eslint-disable */
   export default {
     components: {
@@ -124,6 +126,7 @@
       };
     },
     methods: {
+
     beforeUpload(file) {  
       const isLt2M = file.size / 1024 / 1024 < 500  
       if (!isLt2M) {  
@@ -310,8 +313,8 @@
         // data 包含当前输入值 value 和选择的代码块主题 theme
         const { value, theme } = data;
         this.markdown_content=value;
+        this.randerLatex();
         // 执行保存操作，例如将内容发送到服务器保存
-        console.log("Markdown内容：", value);
         // console.log("选择的代码块主题：", theme);
         // request.post("/blog/upload",{md_content:value})
         // .then(response=>{
@@ -322,9 +325,14 @@
       setMarkdownProHeight() {
         this.markdownProHeight = window.innerHeight;
       },
+      randerLatex(){
+        const elementToRender = document.getElementById('.markdown-preview');
+        MathJax.Hub.Queue(["Typeset", MathJax.Hub, elementToRender]);
+
+      }
     },
     mounted() {
-
+      
       // 获取用户代理字符串
       const userAgent = navigator.userAgent;
 
@@ -345,7 +353,29 @@
             this.formData.title=response.data.title,
             this.formData.outline=response.data.outline,
             this.selected_type=response.data.content_type,
-            this.formData.cover_image=response.data.cover_image
+            this.formData.cover_image=response.data.cover_image;
+
+            const script = document.createElement("script");
+            script.type = "text/javascript";
+            script.src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML";
+            script.async = true;
+            script.onload = () => {
+              // 设置MathJax配置
+              MathJax.Hub.Config({
+                showProcessingMessages: true,
+                messageStyle: "none",
+                tex2jax: { inlineMath: [["$", "$"]] }
+              });
+              MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
+              console.log("hell1o");
+              // 渲染数学公式
+              const mathElements = document.querySelectorAll('.markdown-preview');
+              console.log(mathElements)
+              mathElements.forEach((element) => {
+                MathJax.Hub.Queue(["Typeset", MathJax.Hub, element]);
+              });
+            };
+            document.head.appendChild(script);
         })
       }
     },
