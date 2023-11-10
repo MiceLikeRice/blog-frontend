@@ -54,7 +54,7 @@ export default{
     },
     async mounted(){
         let loadingInstance = Loading.service({ fullscreen: true });
-        await request.get("/blog/allblog")
+        await request.get("/blog/allblog?no_page="+"1")
         .then((response)=>{
             this.$nextTick(() => { // 以服务的方式调用的 Loading 需要异步关闭
                 loadingInstance.close();
