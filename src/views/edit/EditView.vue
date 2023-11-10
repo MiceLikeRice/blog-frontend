@@ -5,10 +5,9 @@
         :value="markdown_content" 
         :height="markdownProHeight" 
         @on-save="handleSave"
-        :autoSave="true"
+        :autoSave="false"
         :interval="0"
-        :markedOptions="{gfm: true}"
-        :toolbars="false"
+        :markedOptions="{gfm: true}" 
       />
       <div class="function" v-if="this.$route.query.blogId">
         <i class="el-icon-folder-opened" @click="updateMarkdown" style="font-size: 30px;"></i>
@@ -91,6 +90,7 @@
   
 <script>
   import MarkdownPro from 'vue-meditor';
+  import mermaid from 'mermaid';
   import request from "@/utils/request.js";
   import config from "@/config.js"
   import 'katex/dist/katex.min.css';
@@ -103,6 +103,7 @@
       return {
         files:[],
         config,
+        mermaid,
         markdownProHeight: window.innerHeight, // 初始高度为屏幕高度
         function_open:false,
         dialogVisible: false,
@@ -331,8 +332,8 @@
 
       }
     },
-    mounted() {
-      
+    async mounted() {
+      this.mermaid.initialize({ startOnLoad: true });  
       // 获取用户代理字符串
       const userAgent = navigator.userAgent;
 
@@ -377,6 +378,29 @@
             };
             document.head.appendChild(script);
         })
+      }
+      else{
+            const script = document.createElement("script");
+            script.type = "text/javascript";
+            script.src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML";
+            script.async = true;
+            script.onload = () => {
+              // 设置MathJax配置
+              MathJax.Hub.Config({
+                showProcessingMessages: true,
+                messageStyle: "none",
+                tex2jax: { inlineMath: [["$", "$"]] }
+              });
+              MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
+              console.log("hell1o");
+              // 渲染数学公式
+              const mathElements = document.querySelectorAll('.markdown-preview');
+              console.log(mathElements)
+              mathElements.forEach((element) => {
+                MathJax.Hub.Queue(["Typeset", MathJax.Hub, element]);
+              });
+            };
+            document.head.appendChild(script);
       }
     },
     beforeDestroy() {
